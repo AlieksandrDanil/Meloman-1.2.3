@@ -11,7 +11,11 @@ fun main() {
     val previousPurchasesSum: UInt = readLine()?.toUInt() ?: return
     print("Введите '1', если клиент осуществляет покупки ежемесячно, и '0' - если нет: ")
     val temp = readLine()?.toUInt() ?: return
-    val isPermanentUser = if(temp == 1U) true else false
+    val isPermanentUser: Boolean = when(temp) {
+        1U -> true
+        0U -> false
+        else -> false
+    }
     val nowPurchasesSum: UInt = if (previousPurchasesSum in PURCHASES_SUM_LOW..PURCHASES_SUM_MID) {
         previousPurchasesSum - DISCOUNT_MONTH_USER
     } else if (previousPurchasesSum >= PURCHASES_SUM_UP) {
